@@ -140,7 +140,7 @@ static int firebird_handle_preparer(pdo_dbh_t *dbh, const char *sql, long sql_le
 	HashTable *np;
 
 	do {
-		isc_stmt_handle s = NULL;
+		isc_stmt_handle s = PDO_FIREBIRD_HANDLE_INITIALIZER;
 		XSQLDA num_sqlda;
 		static char const info[] = { isc_info_sql_stmt_type };
 		char result[8];
@@ -221,7 +221,7 @@ static int firebird_handle_preparer(pdo_dbh_t *dbh, const char *sql, long sql_le
 static long firebird_handle_doer(pdo_dbh_t *dbh, const char *sql, long sql_len TSRMLS_DC) /* {{{ */
 {
 	pdo_firebird_db_handle *H = (pdo_firebird_db_handle *)dbh->driver_data;
-	isc_stmt_handle stmt = NULL;
+	isc_stmt_handle stmt = PDO_FIREBIRD_HANDLE_INITIALIZER;
 	static char const info_count[] = { isc_info_sql_records };
 	char result[64];
 	int ret = 0;
