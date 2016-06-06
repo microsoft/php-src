@@ -230,7 +230,7 @@ static int firebird_fetch_blob(pdo_stmt_t *stmt, int colno, char **ptr, /* {{{ *
 {
 	pdo_firebird_stmt *S = (pdo_firebird_stmt*)stmt->driver_data;
 	pdo_firebird_db_handle *H = S->H;
-	isc_blob_handle blobh = NULL;
+	isc_blob_handle blobh = PDO_FIREBIRD_HANDLE_INITIALIZER;
 	char const bl_item = isc_info_blob_total_length;
 	char bl_info[20];
 	unsigned short i;
@@ -424,7 +424,7 @@ static int firebird_bind_blob(pdo_stmt_t *stmt, ISC_QUAD *blob_id, zval *param T
 {
 	pdo_firebird_stmt *S = (pdo_firebird_stmt*)stmt->driver_data;
 	pdo_firebird_db_handle *H = S->H;
-	isc_blob_handle h = NULL;
+	isc_blob_handle h = PDO_FIREBIRD_HANDLE_INITIALIZER;
 	unsigned long put_cnt = 0, rem_cnt;
 	unsigned short chunk_size;
 	int result = 1;
