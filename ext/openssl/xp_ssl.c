@@ -935,13 +935,9 @@ static int set_local_cert(SSL_CTX *ctx, php_stream *stream TSRMLS_DC) /* {{{ */
 static const SSL_METHOD *php_select_crypto_method(long method_value, int is_client TSRMLS_DC) /* {{{ */
 {
 	if (method_value == STREAM_CRYPTO_METHOD_SSLv2) {
-#ifndef OPENSSL_NO_SSL2
-		return is_client ? SSLv2_client_method() : SSLv2_server_method();
-#else
 		php_error_docref(NULL TSRMLS_CC, E_WARNING,
 				"SSLv2 support is not compiled into the OpenSSL library PHP is linked against");
 		return NULL;
-#endif
 	} else if (method_value == STREAM_CRYPTO_METHOD_SSLv3) {
 #ifndef OPENSSL_NO_SSL3
 		return is_client ? SSLv3_client_method() : SSLv3_server_method();
@@ -980,11 +976,6 @@ static long php_get_crypto_method_ctx_flags(long method_flags TSRMLS_DC) /* {{{ 
 {
 	long ssl_ctx_options = SSL_OP_ALL;
 
-#ifndef OPENSSL_NO_SSL2
-	if (!(method_flags & STREAM_CRYPTO_METHOD_SSLv2)) {
-		ssl_ctx_options |= SSL_OP_NO_SSLv2;
-	}
-#endif
 #ifndef OPENSSL_NO_SSL3
 	if (!(method_flags & STREAM_CRYPTO_METHOD_SSLv3)) {
 		ssl_ctx_options |= SSL_OP_NO_SSLv3;
@@ -1602,7 +1593,6 @@ static zval *capture_session_meta(SSL *ssl_handle) /* {{{ */
 #endif
 		case TLS1_VERSION: proto_str = "TLSv1"; break;
 		case SSL3_VERSION: proto_str = "SSLv3"; break;
-		case SSL2_VERSION: proto_str = "SSLv2"; break;
 		default: proto_str = "UNKNOWN";
 	}
 
@@ -2416,13 +2406,8 @@ php_stream *php_openssl_ssl_socket_factory(const char *proto, size_t protolen,
 		sslsock->enable_on_connect = 1;
 		sslsock->method = get_crypto_method(context, STREAM_CRYPTO_METHOD_ANY_CLIENT);
 	} else if (strncmp(proto, "sslv2", protolen) == 0) {
-#ifdef OPENSSL_NO_SSL2
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "SSLv2 support is not compiled into the OpenSSL library PHP is linked against");
 		return NULL;
-#else
-		sslsock->enable_on_connect = 1;
-		sslsock->method = STREAM_CRYPTO_METHOD_SSLv2_CLIENT;
-#endif
 	} else if (strncmp(proto, "sslv3", protolen) == 0) {
 #ifdef OPENSSL_NO_SSL3
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "SSLv3 support is not compiled into the OpenSSL library PHP is linked against");
