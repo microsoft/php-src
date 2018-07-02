@@ -6,9 +6,6 @@ marcosptf - <marcosptf@yahoo.com.br> - #phparty7 - @phpsp - novatec/2015 - sao p
 <?php
 if (phpversion() < "5.3.0") { die('SKIP php version so lower.'); }
 if (!extension_loaded('openssl')) { die('skip ext/openssl required'); }
-if(substr(PHP_OS, 0, 3) == 'WIN' ) {
-	die('skip not for windows');
-}
 ?>
 --FILE--
 <?php
@@ -43,7 +40,7 @@ bool(false)
 Warning: stream_socket_enable_crypto(): When enabling encryption you must specify the crypto type in %s on line %d
 bool(false)
 
-Warning: stream_socket_enable_crypto(): SSL: Broken pipe in %s on line %d
+Warning: stream_socket_enable_crypto(): SSL: %a in %s on line %d
 bool(false)
 
 Warning: stream_socket_enable_crypto(): SSL/TLS already set-up for this stream in %s on line %d
