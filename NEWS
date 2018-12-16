@@ -1,6 +1,11 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+Backported from 7.1.28
+
+- SQLite3:
+  . Added sqlite3.defensive INI directive. (BohwaZ)
+
 Backported from 7.1.27
 
 - Core:
