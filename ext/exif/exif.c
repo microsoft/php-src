@@ -3519,7 +3519,7 @@ static int exif_scan_thumbnail(image_info_type *ImageInfo TSRMLS_DC)
 			return FALSE;
 		marker = c;
 		length = php_jpg_get16(data+pos);
-		if (pos+length>=ImageInfo->Thumbnail.size) {
+		if (length > ImageInfo->Thumbnail.size || pos >= ImageInfo->Thumbnail.size - length) {
 			return FALSE;
 		}
 #ifdef EXIF_DEBUG
@@ -3540,6 +3540,10 @@ static int exif_scan_thumbnail(image_info_type *ImageInfo TSRMLS_DC)
 			case M_SOF14:
 			case M_SOF15:
 				/* handle SOFn block */
+				if (length < 8 || ImageInfo->Thumbnail.size - 8 < pos) {
+					/* exif_process_SOFn needs 8 bytes */
+					return FALSE;
+				}
 				exif_process_SOFn(data+pos, marker, &sof_info);
 				ImageInfo->Thumbnail.height   = sof_info.height;
 				ImageInfo->Thumbnail.width    = sof_info.width;
@@ -4183,7 +4187,9 @@ PHP_FUNCTION(exif_thumbnail)
 	ZVAL_STRINGL(return_value, ImageInfo.Thumbnail.data, ImageInfo.Thumbnail.size, 1);
 	if (arg_c >= 3) {
 		if (!ImageInfo.Thumbnail.width || !ImageInfo.Thumbnail.height) {
-			exif_scan_thumbnail(&ImageInfo TSRMLS_CC);
+			if (!exif_scan_thumbnail(&ImageInfo TSRMLS_CC)) {
+				ImageInfo.Thumbnail.width = ImageInfo.Thumbnail.height = 0;
+			}
 		}
 		zval_dtor(p_width);
 		zval_dtor(p_height);
