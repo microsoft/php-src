@@ -1,5 +1,51 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Backported from 7.2.27
+
+- Core:
+  . Fixed bug #77630 (rename() across the device may allow unwanted access during
+    processing). (Stas)
+
+- EXIF:
+  . Fixed bug #77509 (Uninitialized read in exif_process_IFD_in_TIFF). (Stas)
+  . Fixed bug #77540 (Invalid Read on exif_process_SOFn). (Stas)
+  . Fixed bug #77563 (Uninitialized read in exif_process_IFD_in_MAKERNOTE). (Stas)
+  . Fixed bug #77659 (Uninitialized read in exif_process_IFD_in_MAKERNOTE). (Stas)
+
+- PHAR:
+  . Fixed bug #77396 (Null Pointer Dereference in phar_create_or_parse_filename).
+    (bishop)
+  . Fixed bug #77586 (phar_tar_writeheaders_int() buffer overflow). (bishop)
+
+- SPL:
+  . Fixed bug #77431 (openFile() silently truncates after a null byte). (cmb)
+
+Backported from 7.2.26
+
+- GD:
+  . Fixed bug #77269 (efree() on uninitialized Heap data in imagescale leads to
+    use-after-free). (cmb)
+  . Fixed bug #77270 (imagecolormatch Out Of Bounds Write on Heap). (cmb)
+
+- Mbstring:
+  . Fixed bug #77370 (Buffer overflow on mb regex functions - fetch_token). (Stas)
+  . Fixed bug #77371 (heap buffer overflow in mb regex functions
+    - compile_string_node). (Stas)
+  . Fixed bug #77381 (heap buffer overflow in multibyte match_at). (Stas)
+  . Fixed bug #77382 (heap buffer overflow due to incorrect length in
+    expand_case_fold_string). (Stas)
+  . Fixed bug #77385 (buffer overflow in fetch_token). (Stas)
+  . Fixed bug #77394 (Buffer overflow in multibyte case folding - unicode). (Stas)
+  . Fixed bug #77418 (Heap overflow in utf32be_mbc_to_code). (Stas)
+
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext). (Stas)
+
+- Xmlrpc:
+  . Fixed bug #77242 (heap out of bounds read in xmlrpc_decode()). (cmb)
+  . Fixed bug #77380 (Global out of bounds read in xmlrpc base64 code). (Stas)
+
 06 Dec 2018 PHP 7.0.33
 
 - Core:
