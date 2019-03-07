@@ -1,7 +1,7 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Backported from 7.2.27
+Backported from 7.1.27
 
 - Core:
   . Fixed bug #77630 (rename() across the device may allow unwanted access during
@@ -21,7 +21,7 @@ Backported from 7.2.27
 - SPL:
   . Fixed bug #77431 (openFile() silently truncates after a null byte). (cmb)
 
-Backported from 7.2.26
+Backported from 7.1.26
 
 - GD:
   . Fixed bug #77269 (efree() on uninitialized Heap data in imagescale leads to
