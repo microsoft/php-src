@@ -2054,6 +2054,15 @@ static int php_sqlite3_authorizer(void *autharg, int access_type, const char *ar
 				}
 #endif
 
+				if (strncmp(arg3, "file:", 5) == 0) {
+					/* starts with "file:" */
+					if (!arg3[5]) {
+						return SQLITE_DENY;
+					}
+					if (php_check_open_basedir(arg3 + 5)) {
+						return SQLITE_DENY;
+					}
+				}
 				if (php_check_open_basedir(arg3)) {
 					return SQLITE_DENY;
 				}
