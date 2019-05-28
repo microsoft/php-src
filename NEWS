@@ -1,13 +1,27 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+Backported from 7.1.30
+
+- EXIF:
+  . Fixed bug #77988 (heap-buffer-overflow on php_jpg_get16). 
+  (CVE-2019-11040) (Stas)
+
+- GD:
+  . Fixed bug #77973 (Uninitialized read in gdImageCreateFromXbm).
+  (CVE-2019-11038) (cmb)
+
+- Iconv:
+  . Fixed bug #78069 (Out-of-bounds read in iconv.c:_php_iconv_mime_decode()
+  due to integer overflow). (CVE-2019-11039). (maris dot adam)
+
 Backported from 7.1.29
 
 - EXIF
   . Fixed bug #77950 (Heap-buffer-overflow in _estrndup via exif_process_IFD_TAG). 
     (CVE-2019-11036) (Stas)
 
-- Mail
+- Mail:
   . Fixed bug #77821 (Potential heap corruption in TSendMail()). (cmb)
 
 Backported from 7.1.28
