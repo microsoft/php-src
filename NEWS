@@ -7,6 +7,9 @@ Backported from 7.1.29
   . Fixed bug #77950 (Heap-buffer-overflow in _estrndup via exif_process_IFD_TAG). 
     (CVE-2019-11036) (Stas)
 
+- Mail
+  . Fixed bug #77821 (Potential heap corruption in TSendMail()). (cmb)
+
 Backported from 7.1.28
 
 - EXIF:
