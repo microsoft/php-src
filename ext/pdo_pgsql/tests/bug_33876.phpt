@@ -151,5 +151,5 @@ Array
 (
     [0] => 22P02
     [1] => 7
-    [2] => ERROR:  invalid input syntax for type boolean: ""
+    [2] => %s:  %sboolean%s
 )
