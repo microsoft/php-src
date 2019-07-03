@@ -1,5 +1,7 @@
 --TEST--
 Bug #64146 (serialize incorrectly saving objects when they are cloned)
+--XFAIL--
+Bug #66085, fixed in PHP 7 expected to fail for PHP 5.6
 --FILE--
 <?php
 
