@@ -7,6 +7,7 @@ if (version_compare(PHP_VERSION, "6.0", ">")) die("skip pre-unicode version of P
 if (!extension_loaded("spl")) die("skip SPL not available");
 if (!extension_loaded("zlib")) die("skip zlib not available");
 if (version_compare(phpversion(), '5.2.6', '<')) die("skip zlib is buggy in PHP < 5.2.6");
+if (phpversion() < "7.0.0" && extension_loaded('Zend OPcache') && ini_get('opcache.enable_cli')==1) die("xfail for PHP version lower than 7 when OPcache enabled");
 ?>
 --INI--
 phar.readonly=0
