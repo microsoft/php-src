@@ -1,7 +1,10 @@
 --TEST--
 Phar: rename test zip-based
 --SKIPIF--
-<?php if (!extension_loaded("phar")) die("skip"); ?>
+<?php
+if (!extension_loaded("phar")) die("skip");
+if (phpversion() < "7.0.0" && extension_loaded('Zend OPcache') && ini_get('opcache.enable_cli')==1) die("xfail for PHP version lower than 7 when OPcache enabled");
+?>
 --INI--
 phar.readonly=0
 phar.require_hash=0
