@@ -3,10 +3,20 @@ PHP                                                                        NEWS
 
 Backported from 7.1.31
 
+- EXIF:
+  . Fixed bug #78256 (heap-buffer-overflow on exif_process_user_comment).
+    (CVE-2019-11042) (Stas)
+  . Fixed bug #78222 (heap-buffer-overflow on exif_scan_thumbnail).
+    (CVE-2019-11041) (Stas)
+  
+- Phar:
+  . Fixed bug #77919 (Potential UAF in Phar RSHUTDOWN). (cmb)
+
 - SQLite:
   . Upgraded to SQLite 3.28.0. (cmb)
 
 Backported from 7.1.30
+
 
 - EXIF:
   . Fixed bug #77988 (heap-buffer-overflow on php_jpg_get16). 
