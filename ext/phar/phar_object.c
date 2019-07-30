@@ -2026,7 +2026,7 @@ static zval *phar_rename_archive(phar_archive_data **sphar, char *ext, zend_bool
 	char *newname = NULL, *newpath = NULL;
 	zval *ret, arg1;
 	zend_class_entry *ce;
-	char *error;
+	char *error = NULL;
 	const char *pcr_error;
 	int ext_len = ext ? strlen(ext) : 0;
 	int oldname_len;
@@ -2186,6 +2186,8 @@ its_ok:
 	phar_flush(phar, 0, 0, 1, &error TSRMLS_CC);
 
 	if (error) {
+		zend_hash_del(&(PHAR_G(phar_fname_map)), newpath, phar->fname_len);
+		*sphar = NULL;
 		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 		efree(oldpath);
