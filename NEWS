@@ -1,6 +1,14 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+Backported from 7.1.32
+
+- mbstring:
+  . Fixed CVE-2019-13224 (don't allow different encodings for onig_new_deluxe) (stas)
+
+- pcre:
+  . Fixed bug #75457 (heap use-after-free in pcrelib) (cmb)
+
 Backported from 7.1.31
 
 - EXIF:
