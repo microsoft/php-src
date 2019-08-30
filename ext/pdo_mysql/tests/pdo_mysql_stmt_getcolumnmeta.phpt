@@ -162,8 +162,8 @@ try {
 	test_meta($db, 100, 'INT', -2147483648, 'LONG', ($is_mysqlnd) ? PDO::PARAM_INT : PDO::PARAM_STR);
 	test_meta($db, 110, 'INT UNSIGNED', 4294967295, 'LONG', ($is_mysqlnd) ? PDO::PARAM_INT : PDO::PARAM_STR);
 
-	test_meta($db, 120, 'BIGINT', '-9223372036854775808', 'LONGLONG', ($is_mysqlnd) ? ((PHP_INT_SIZE == 4) ? PDO::PARAM_STR : PDO::PARAM_INT) : PDO::PARAM_STR);
-	test_meta($db, 130, 'BIGINT UNSIGNED', '18446744073709551615', 'LONGLONG', ($is_mysqlnd) ? ((PHP_INT_SIZE == 4) ? PDO::PARAM_STR : PDO::PARAM_INT) : PDO::PARAM_STR);
+	test_meta($db, 120, 'BIGINT', '-9223372036854775808', 'LONGLONG', PDO::PARAM_STR);
+	test_meta($db, 130, 'BIGINT UNSIGNED', '18446744073709551615', 'LONGLONG', PDO::PARAM_STR);
 
 	test_meta($db, 130, 'REAL', -1.01, ($real_as_float) ? 'FLOAT' : 'DOUBLE', PDO::PARAM_STR);
 	test_meta($db, 140, 'REAL UNSIGNED', 1.01, ($real_as_float) ? 'FLOAT' : 'DOUBLE', PDO::PARAM_STR);
