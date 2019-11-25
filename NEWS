@@ -10,6 +10,8 @@ Backported from 7.2.26
 - Core:
   . Fixed bug #78862 (link() silently truncates after a null byte on Windows).
     (CVE-2019-11044). (cmb)
+  . Fixed bug #78863 (DirectoryIterator class silently truncates after a null
+    byte). (CVE-2019-11045). (cmb)
 
 Backported from 7.1.33
 
