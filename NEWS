@@ -13,6 +13,10 @@ Backported from 7.2.26
   . Fixed bug #78863 (DirectoryIterator class silently truncates after a null
     byte). (CVE-2019-11045). (cmb)
 
+- EXIF:
+  . Fixed bug #78793 (Use-after-free in exif parsing under memory sanitizer).
+    (CVE-2019-11050). (Nikita)
+
 24 Oct 2019, PHP 7.1.33
 
 - FPM:
