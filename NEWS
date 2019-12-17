@@ -7,6 +7,10 @@ Backported from 7.2.26
   . Fixed bug #78878 (Buffer underflow in bc_shift_addsub). (CVE-2019-11046).
     (cmb)
 
+- Core:
+  . Fixed bug #78862 (link() silently truncates after a null byte on Windows).
+    (CVE-2019-11044). (cmb)
+
 Backported from 7.1.33
 
 - FPM:
