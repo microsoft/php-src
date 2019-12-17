@@ -14,8 +14,8 @@ var_dump(bcpowmod('4', '4', '3.1', 3));
 ?>
 ===DONE===
 --EXPECT--
+bc math warning: non-zero scale in base
 string(5) "1.000"
+bc math warning: non-zero scale in modulus
 string(5) "1.000"
 ===DONE===
-bc math warning: non-zero scale in base
-bc math warning: non-zero scale in modulus

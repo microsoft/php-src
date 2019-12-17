@@ -14,5 +14,5 @@ var_dump(bcpowmod(1, 1.2, 1, 1));
 ?>
 --EXPECTF--
 string(1) "1"
-string(3) "0.0"
 bc math warning: non-zero scale in exponent
+string(3) "0.0"
