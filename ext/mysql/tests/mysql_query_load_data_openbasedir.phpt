@@ -2,6 +2,8 @@
 LOAD DATA INFILE - open_basedir
 --SKIPIF--
 <?php
+if (substr(PHP_OS, 0, 3) == 'WIN') die("skip this test is not for Windows platforms");
+
 include_once('skipif.inc');
 include_once('skipifconnectfailure.inc');
 
