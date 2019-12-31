@@ -68,7 +68,7 @@ foreach($options_to_check as $option) {
 Warning: curl_multi_exec(): CURLOPT_STDERR resource has gone away, resetting to stderr in %s on line %d
 
 Warning: curl_multi_exec(): CURLOPT_STDERR resource has gone away, resetting to stderr in %s on line %d
-Ok for CURLOPT_STDERR
+%AOk for CURLOPT_STDERR
 %A
 
 Warning: curl_multi_exec(): CURLOPT_WRITEHEADER resource has gone away, resetting to default in %s on line %d

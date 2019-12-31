@@ -30,7 +30,5 @@ echo "Ok\n";
 <?php @unlink(dirname(__FILE__) . '/bug48203.tmp'); ?>
 --EXPECTF--
 Warning: curl_exec(): CURLOPT_STDERR resource has gone away, resetting to stderr in %s on line %d
-Hello World!
-Hello World!Ok
-%A
-
+%AHello World!
+Hello World!Ok%A
