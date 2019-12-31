@@ -17,14 +17,14 @@ $conf[4] = preg_replace("!^\\Q".dirname(__FILE__)."\\E!", "__DIR__", $conf[4]);
 print_r($conf);
 include("blacklist.inc");
 $status = opcache_get_status();
-print_r(count($status['scripts']));
+print_r(count($status['scripts']) > 0);
 ?>
 --EXPECTF--
 Array
 (
-    [0] => C:\path\to\foo
-    [1] => C:\path\to\foo2
-    [2] => C:\path\to\bar
+    [0] => %c:\path\to\foo
+    [1] => %c:\path\to\foo2
+    [2] => %c:\path\to\bar
     [3] => __DIR__\blacklist.inc
     [4] => __DIR__\current.php
     [5] => %scurrent.php
