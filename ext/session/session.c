@@ -2049,6 +2049,7 @@ static PHP_FUNCTION(session_create_id)
 				/* Detect collision and retry */
 				if (PS(mod)->s_validate_sid(&PS(mod_data), new_id) == FAILURE) {
 					zend_string_release(new_id);
+					new_id = NULL;
 					continue;
 				}
 				break;
