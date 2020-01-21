@@ -4781,7 +4781,7 @@ PHPAPI size_t php_strip_tags_ex(char *rbuf, size_t len, int *stateptr, const cha
 				if (state == 4) {
 					/* Inside <!-- comment --> */
 					break;
-				} else if (state == 2 && *(p-1) != '\\') {
+				} else if (state == 2 && p >= buf + 1 && *(p-1) != '\\') {
 					if (lc == c) {
 						lc = '\0';
 					} else if (lc != '\\') {
@@ -4808,7 +4808,7 @@ PHPAPI size_t php_strip_tags_ex(char *rbuf, size_t len, int *stateptr, const cha
 
 			case '!':
 				/* JavaScript & Other HTML scripting languages */
-				if (state == 1 && *(p-1) == '<') {
+				if (state == 1 && p >= buf + 1 && *(p-1) == '<') {
 					state = 3;
 					lc = c;
 				} else {
@@ -4835,7 +4835,7 @@ PHPAPI size_t php_strip_tags_ex(char *rbuf, size_t len, int *stateptr, const cha
 
 			case '?':
 
-				if (state == 1 && *(p-1) == '<') {
+				if (state == 1 && p >= buf + 1 && *(p-1) == '<') {
 					br=0;
 					state=2;
 					break;
