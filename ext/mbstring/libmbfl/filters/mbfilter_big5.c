@@ -138,6 +138,10 @@ static unsigned short cp950_pua_tbl[][4] = {
 	{0xf70f,0xf848,0xc740,0xc8fe},
 };
 
+#ifdef PHP_WIN32
+# define inline __inline
+#endif
+
 static inline int is_in_cp950_pua(int c1, int c) {
 	if ((c1 >= 0xfa && c1 <= 0xfe) || (c1 >= 0x8e && c1 <= 0xa0) ||
 			(c1 >= 0x81 && c1 <= 0x8d) || (c1 >= 0xc7 && c1 <= 0xc8)) {
