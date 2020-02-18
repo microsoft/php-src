@@ -37,13 +37,13 @@ $clientCode = <<<'CODE'
     // openssl x509 -noout -fingerprint -md5 -inform pem -in ext/openssl/tests/bug54992.pem | cut -d '=' -f 2 | tr -d ':' | tr 'A-F' 'a-f'
     // Currently it's 4edbbaf40a6a4b6af22b6d6d9818378f
     // One below is intentionally broken (compare the last character):
-    stream_context_set_option($clientCtx, 'ssl', 'peer_fingerprint', '4edbbaf40a6a4b6af22b6d6d98183780');
+    stream_context_set_option($clientCtx, 'ssl', 'peer_fingerprint', '6ca1c64686ce3c66c48c8ee9b6e93f20');
     var_dump(stream_socket_client($serverUri, $errno, $errstr, 2, $clientFlags, $clientCtx));
 
     // Run the following to get actual sha256 (from sources root):
     // openssl x509 -noout -fingerprint -sha256 -inform pem -in ext/openssl/tests/bug54992.pem | cut -d '=' -f 2 | tr -d ':' | tr 'A-F' 'a-f'
     stream_context_set_option($clientCtx, 'ssl', 'peer_fingerprint', [
-        'sha256' => 'b1d480a2f83594fa243d26378cf611f334d369e59558d87e3de1abe8f36cb997',
+        'sha256' => '5ba604cf6a083d5ed6d5ba92f428202ab0314afbff42f622e24c1b761a0ddc0b',
     ]);
     var_dump(stream_socket_client($serverUri, $errno, $errstr, 2, $clientFlags, $clientCtx));
 CODE;
