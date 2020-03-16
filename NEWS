@@ -1,6 +1,16 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+Backported from 7.2.29
+
+- Core: 
+  . Fixed bug #79329 (get_headers() silently truncates after a null byte) 
+    (CVE-2020-7066) (cmb)
+
+- EXIF:
+  . Fixed bug #79282 (Use-of-uninitialized-value in exif) (CVE-2020-7064) 
+    (Nikita)
+
 Backported from 7.2.28
 
 - DOM:
