@@ -660,7 +660,7 @@ PHP_FUNCTION(get_headers)
 	zval *zcontext = NULL;
 	php_stream_context *context;
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|lr!", &url, &url_len, &format, &zcontext) == FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS(), "p|lr!", &url, &url_len, &format, &zcontext) == FAILURE) {
 		return;
 	}
 
