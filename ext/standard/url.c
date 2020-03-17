@@ -659,7 +659,7 @@ PHP_FUNCTION(get_headers)
 	HashTable *hashT;
 	zend_long format = 0;
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|l", &url, &url_len, &format) == FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS(), "p|l", &url, &url_len, &format) == FAILURE) {
 		return;
 	}
 	context = FG(default_context) ? FG(default_context) : (FG(default_context) = php_stream_context_alloc());
