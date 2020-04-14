@@ -1,6 +1,12 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+Backported from 7.2.30
+
+- Standard:
+  . Fixed bug #79330 (shell_exec silently truncates after a null byte). (stas)
+  . Fixed bug #79465 (OOB Read in urldecode). (CVE-2020-7067) (stas)
+
 Backported from 7.2.29
 
 - Core: 
