@@ -538,11 +538,11 @@ PHP_FUNCTION(shell_exec)
 	}
 
 	if (!command_len) {
-		php_error_docref(NULL, E_WARNING, "Cannot execute a blank command");
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Cannot execute a blank command");
 		RETURN_FALSE;
 	}
 	if (strlen(command) != command_len) {
-		php_error_docref(NULL, E_WARNING, "NULL byte detected. Possible attack");
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "NULL byte detected. Possible attack");
 		RETURN_FALSE;
 	}
 
