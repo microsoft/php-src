@@ -609,9 +609,9 @@ static void *php_ap_memstr(char *haystack, int haystacklen, char *needle, int ne
 }
 
 /* read until a boundary condition */
-static int multipart_buffer_read(multipart_buffer *self, char *buf, int bytes, int *end TSRMLS_DC)
+static unsigned int multipart_buffer_read(multipart_buffer *self, char *buf, unsigned int bytes, int *end TSRMLS_DC)
 {
-	int len, max;
+	unsigned int len, max;
 	char *bound;
 
 	/* fill buffer if needed */
@@ -658,7 +658,7 @@ static int multipart_buffer_read(multipart_buffer *self, char *buf, int bytes, i
 static char *multipart_buffer_read_body(multipart_buffer *self, unsigned int *len TSRMLS_DC)
 {
 	char buf[FILLUNIT], *out=NULL;
-	int total_bytes=0, read_bytes=0;
+	unsigned int total_bytes=0, read_bytes=0;
 
 	while((read_bytes = multipart_buffer_read(self, buf, sizeof(buf), NULL TSRMLS_CC))) {
 		out = erealloc(out, total_bytes + read_bytes + 1);
@@ -684,7 +684,8 @@ SAPI_API SAPI_POST_HANDLER_FUNC(rfc1867_post_handler) /* {{{ */
 {
 	char *boundary, *s = NULL, *boundary_end = NULL, *start_arr = NULL, *array_index = NULL;
 	char *temp_filename = NULL, *lbuf = NULL, *abuf = NULL;
-	int boundary_len = 0, cancel_upload = 0, is_arr_upload = 0, array_len = 0;
+	int boundary_len = 0, cancel_upload = 0, is_arr_upload = 0;
+	unsigned int array_len = 0;
 	int64_t total_bytes = 0, max_file_size = 0;
 	int skip_upload = 0, anonindex = 0, is_anonymous;
 	zval *http_post_files = NULL;
