@@ -1403,6 +1403,11 @@ static void php_getimagesize_from_any(INTERNAL_FUNCTION_PARAMETERS, int mode) { 
 			return;
 	}
 
+	if (mode == FROM_PATH && CHECK_NULL_PATH(input, input_len)) {
+		php_error_docref(NULL, E_WARNING, "Invalid path");
+		return;
+	}
+
 	if (argc == 2) {
 		zval_dtor(info);
 		array_init(info);
