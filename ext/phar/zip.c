@@ -682,7 +682,7 @@ foundit:
 			efree(actual_alias);
 		}
 
-		zend_hash_add(&(PHAR_GLOBALS->phar_alias_map), actual_alias, mydata->alias_len, (void*)&mydata, sizeof(phar_archive_data*), NULL);
+		zend_hash_add(&(PHAR_GLOBALS->phar_alias_map), mydata->alias, mydata->alias_len, (void*)&mydata, sizeof(phar_archive_data*), NULL);
 	} else {
 		phar_archive_data **fd_ptr;
 
