@@ -1,5 +1,12 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Backported from 7.3.26
+
+- Standard:
+  . Fixed bug #77423 (FILTER_VALIDATE_URL accepts URLs with invalid userinfo).
+    (CVE-2020-7071) (cmb)
+
 01 Oct 2020, PHP 7.2.34
 
 - Core:
