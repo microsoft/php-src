@@ -120,8 +120,14 @@ static int firebird_stmt_execute(pdo_stmt_t *stmt TSRMLS_DC) /* {{{ */
 				}
 				if (result[0] == isc_info_sql_records) {
 					unsigned i = 3, result_size = isc_vax_integer(&result[1], 2);
+					if (result_size > sizeof(result)) {
+						goto error;
+					}
 					while (result[i] != isc_info_end && i < result_size) {
 						short len = (short) isc_vax_integer(&result[i + 1], 2);
+						if (len != 1 && len != 2 && len != 4) {
+							goto error;
+						}
 						if (result[i] != isc_info_req_select_count) {
 							affected_rows += isc_vax_integer(&result[i + 3], len);
 						}
@@ -145,7 +151,8 @@ static int firebird_stmt_execute(pdo_stmt_t *stmt TSRMLS_DC) /* {{{ */
 		return 1;
 	} while (0);
 
-	RECORD_ERROR(stmt);	
+error:
+	RECORD_ERROR(stmt);
 
 	return 0;
 }
