@@ -275,7 +275,7 @@ static int firebird_fetch_blob(pdo_stmt_t *stmt, int colno, char **ptr, /* {{{ *
 		ISC_STATUS stat;
 
 		/* prevent overflow */
-		if (*len == ZEND_ULONG_MAX) {
+		if (*len == (LONG_MAX * 2UL +1UL)) {
 			result = 0;
 			goto fetch_blob_end;
 		}
