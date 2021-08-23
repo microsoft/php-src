@@ -1428,6 +1428,7 @@ static int phar_build(zend_object_iterator *iter, void *puser TSRMLS_DC) /* {{{ 
 	phar_archive_object *phar_obj = p_obj->p;
 	char *str = "[stream]";
 	php_stream_statbuf ssb;
+	char ch;
 
 	iter->funcs->get_current_data(iter, &value TSRMLS_CC);
 
@@ -1551,7 +1552,7 @@ phar_spl_fileinfo:
 		base = temp;
 		base_len = strlen(base);
 
-		if (strstr(fname, base)) {
+		if (fname_len >= base_len && strncmp(fname, base, base_len) == 0 && ((ch = fname[base_len - IS_SLASH(base[base_len - 1])]) == '\0' || IS_SLASH(ch))) {
 			str_key_len = fname_len - base_len;
 
 			if (str_key_len <= 0) {
