@@ -1,6 +1,11 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+Backported from 7.3.30
+
+- Phar:
+  . Fixed bug #81211: Symlinks are followed when creating PHAR archive (cmb)
+
 Backported from 7.3.29
 
 - Core:
